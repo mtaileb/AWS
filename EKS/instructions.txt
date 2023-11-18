@@ -1,4 +1,5 @@
-# CREATION DU CLUSTER EKS:
+# CREATION DU CLUSTER EKS: VOIR SUPPORT DE FORMATION POUR LES ETAPES GRAPHIQUES
+# ALTERNATIVE: ETAPES VIA CONSOLE ET EKS SERVERLESS AVEC FARGO
 # Ouvrir AWS Console: https://us-west-2.console.aws.amazon.com/eks/home?region=us-west-2#/clusters
 # Cliquer sur le bouton en-haut à droite pour ouvrir le terminal Cloud Shell:
 # Installer ekctl en copiant-collant le code suivant:
@@ -17,7 +18,7 @@ sudo mv /tmp/eksctl /usr/local/bin
 
 # Créer le cluster EKS (ici sur la plateforme serverless Fargate):
 eksctl create cluster --name my-cluster --region eu-west-2 --fargate
-# Visualiser les noeuds ducluster:
+# Visualiser les noeuds du cluster:
 kubectl get nodes -o wide
 
 # DEPLOIEMENT D'UNE APPLICATION SUR LE CLUSTER EKS:
@@ -52,4 +53,4 @@ options ndots:5
 # Sortons maintenant du shell de ce pod:
 exit
 
-
+# VOIR AUSSI LE DEPLOIEMENT DE L'APPLI DEMO DANS LE DOSSIER AZUREDEVOPS/AKS

@@ -1,3 +1,4 @@
+# CREATION DU CLUSTER EKS:
 # Ouvrir AWS Console: https://us-west-2.console.aws.amazon.com/eks/home?region=us-west-2#/clusters
 # Cliquer sur le bouton en-haut à droite pour ouvrir le terminal Cloud Shell:
 # Installer ekctl en copiant-collant le code suivant:
@@ -18,4 +19,37 @@ sudo mv /tmp/eksctl /usr/local/bin
 eksctl create cluster --name my-cluster --region eu-west-2 --fargate
 # Visualiser les noeuds ducluster:
 kubectl get nodes -o wide
+
+# DEPLOIEMENT D'UNE APPLICATION SUR LE CLUSTER EKS:
+kubectl create namespace eks-sample-app
+# Ensuite copier les fichiers eks-sample-deployment.yaml et eks-sample-service.yaml (voir dans ce même répertoire)
+# Puis les exécuter:
+kubectl apply -f eks-sample-deployment.yaml
+kubectl apply -f eks-sample-service.yaml
+# Vérifier les ressources du namespace:
+kubectl get all -n eks-sample-app
+# Vérifier que le service est déployé:
+kubectl -n eks-sample-app describe service eks-sample-linux-service
+# Voyons les détails d'un des pods:
+kubectl -n eks-sample-app describe pod eks-sample-linux-deployment-65b7669776-m6qxz
+# Entrons dans le shell de ce même pod:
+kubectl exec -it eks-sample-linux-deployment-65b7669776-m6qxz -n eks-sample-app -- /bin/bash
+# Vérifions le service du serveur web qui y est installé/exécuté:
+curl eks-sample-linux-service
+{ On devrait avoir une sortie de ce genre:
+<!DOCTYPE html>
+<html>
+<head>
+<title>Welcome to nginx!</title>
+[...]
+
+# Voyons le serveur DNS du pod:
+cat /etc/resolv.conf
+# On devrait avoir une sortie semblable à:
+nameserver 10.100.0.10
+search eks-sample-app.svc.cluster.local svc.cluster.local cluster.local us-west-2.compute.internal
+options ndots:5
+# Sortons maintenant du shell de ce pod:
+exit
+
 

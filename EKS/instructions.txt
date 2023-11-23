@@ -9,7 +9,7 @@ svc/kubernetes   ClusterIP   10.100.0.1   <none>        443/TCP   1m
 # Voir les noeuds et les pods:
 kubectl get nodes
 kubectl get pods -A
-# Maintenant vous pouvez passer directement à la partie déploiement d'ue application plus loin ci-dessous.
+# Maintenant vous pouvez passer directement à la partie déploiement d'une application plus loin ci-dessous.
 
 # ALTERNATIVE: CREATION DU CLUSTER EKS VIA CONSOLE ET EKS SERVERLESS AVEC FARGO
 # Ouvrir AWS Console: https://us-west-2.console.aws.amazon.com/eks/home?region=us-west-2#/clusters

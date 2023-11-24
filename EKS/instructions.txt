@@ -36,6 +36,8 @@ kubectl get nodes -o wide
 # DEPLOIEMENT D'UNE APPLICATION SUR LE CLUSTER EKS:
 kubectl create namespace eks-sample-app
 # Ensuite copier les fichiers eks-sample-deployment.yaml et eks-sample-service.yaml (voir dans ce même répertoire)
+wget https://github.com/mtaileb/AWS/raw/main/EKS/eks-sample-deployment.yaml
+wget https://github.com/mtaileb/AWS/raw/main/EKS/eks-sample-service.yaml
 # Puis les exécuter:
 kubectl apply -f eks-sample-deployment.yaml
 kubectl apply -f eks-sample-service.yaml

@@ -23,9 +23,9 @@ kubectl apply -f eks-sample-service.yaml
 kubectl get all -n eks-sample-app
 # Vérifier que le service est déployé:
 kubectl -n eks-sample-app describe service eks-sample-linux-service
-# Voyons les détails d'un des pods:
+# Voyons les détails d'un des pods (penser à adapter le nom du pod à votre cas particulier):
 kubectl -n eks-sample-app describe pod eks-sample-linux-deployment-65b7669776-m6qxz
-# Entrons dans le shell de ce même pod:
+# Entrons dans le shell de ce même pod (penser à adapter le nom du pod à votre cas particulier):
 kubectl exec -it eks-sample-linux-deployment-65b7669776-m6qxz -n eks-sample-app -- /bin/bash
 # Vérifions le service du serveur web qui y est installé/exécuté:
 curl eks-sample-linux-service
